@@ -1,0 +1,27 @@
+<h1><%= @destination.name %> </h1>
+<h2>Country: <%= @destination.country %></h2>
+
+<h3>Most Recent Related Posts:</h3>
+<% if @destination.posts.empty? %>
+Nothing yet
+<% else %>
+<ol>
+<% @destination.find_recent_posts.each do |post| %>
+<li><%= link_to post.title, post %></li>
+<% end %>
+</ol>
+<% end %>
+
+<h3>Featured Destination:</h3>
+<% if @destination.posts.empty? %>
+Nothing yet
+<% else %>
+<%= link_to @destination.find_featured_post.title, @destination.find_featured_post  %>
+<% end %>
+
+<h3>Average Age of Bloggers Posting About This Destination:</h3>
+<% if @destination.posts.empty? %>
+Nothing yet
+<% else %>
+<%= @destination.average_age %>
+<% end %>
