@@ -1,0 +1,26 @@
+<h1><%= @blogger.name %></h1>
+<h3>Age: <%= @blogger.age %></h3>
+
+<h3>Bio:</h3>
+<p><%= @blogger.bio %>
+
+<h3>Total Likes:</h3>
+<%= @blogger.get_total_likes %>
+
+<h3>Featured Post:</h3>
+<% if @blogger.posts.empty? %>
+Nothing yet
+<% else %>
+<%= link_to "Post Link", @blogger.find_featured_post %>
+<% end %>
+
+<h3>Top Destinations:</h3>
+<ol>
+<% if !@blogger.destinations.empty? %>
+<% @blogger.top_destinations.each do |dest| %>
+<li><%= dest %></li>
+<% end %>
+<% else %>
+Nothing yet
+<% end %>
+</ol>
